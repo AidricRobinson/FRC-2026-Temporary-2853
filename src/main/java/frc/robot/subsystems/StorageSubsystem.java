@@ -6,25 +6,25 @@ import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.NeutralModeValue;
 import frc.robot.Constants.PortConstants;
 
-public class ConveyorSubsystem extends SubsystemBase {
-    private TalonFX conveyorMotor;
+public class StorageSubsystem extends SubsystemBase {
+    private TalonFX storageMotor;
     private double testSpeed;
     
-    public ConveyorSubsystem(){
-        conveyorMotor = new TalonFX(PortConstants.conveyorMotorPort);
-        conveyorMotor.setNeutralMode(NeutralModeValue.Brake);
+    public StorageSubsystem(){
+        storageMotor = new TalonFX(PortConstants.StorageMotorPort);
+        storageMotor.setNeutralMode(NeutralModeValue.Brake);
         testSpeed= 0.2;
     }
     public void setPower(double power){
-        conveyorMotor.set(power);
+        storageMotor.set(power);
     }
 
 
     public void setMotorTestSpeed() {
-        conveyorMotor.set(testSpeed);
+        storageMotor.set(testSpeed);
     }
     public void setMotorTestSpeedNeg() {
-        conveyorMotor.set(-testSpeed);
+        storageMotor.set(-testSpeed);
     }
     public void upSpeed() {
         testSpeed += 0.05;
@@ -37,6 +37,6 @@ public class ConveyorSubsystem extends SubsystemBase {
     }
 
     public void shutdown(){
-        conveyorMotor.set(0);
+        storageMotor.set(0);
     }
 }

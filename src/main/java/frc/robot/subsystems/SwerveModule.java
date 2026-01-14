@@ -45,11 +45,6 @@ public class SwerveModule {
  private final boolean CANCoderReversed;
 
 
- 
-
- 
-
-
  //constructor
  public SwerveModule(int drivePort, int rotationPort, boolean driveReversed, boolean rotationReversed,
     int CANCoderPort, double CANCoderOffset, boolean CANCoderReversed) {

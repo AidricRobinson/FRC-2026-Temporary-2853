@@ -8,21 +8,17 @@ import frc.robot.Constants.OperatorConstants;
 import frc.robot.Constants.GamepadConstants;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.AutoCommands.Autos;
-import frc.robot.commands.TeleOpCommands.ConveyorBackwardCommand;
+import frc.robot.commands.TeleOpCommands.StorageBackwardCommand;
 import frc.robot.commands.TeleOpCommands.ConveyorForwardCommand;
-import frc.robot.commands.TestCommands.RotationSetPointTestCommands.RotationBottomCommand;
-import frc.robot.commands.TestCommands.RotationSetPointTestCommands.RotationTopCommand;
-import frc.robot.commands.TestCommands.RotationTestCommands.RotationTestSetSpeed;
-import frc.robot.commands.TestCommands.RotationTestCommands.RotationTestSetSpeedNeg;
+
 // import frc.robot.commands.SwerveControlCommand;
 import frc.robot.commands.TestCommands.ShooterTestCommands.ShooterTestSetSpeed;
 import frc.robot.commands.TestCommands.ShooterTestCommands.ShooterTestShutdown;
 import frc.robot.commands.TestCommands.ShooterTestCommands.ShooterTestSpeedDown;
 import frc.robot.commands.TestCommands.ShooterTestCommands.ShooterTestSpeedUp;
-import frc.robot.subsystems.ConveyorSubsystem;
+import frc.robot.subsystems.StorageSubsystem;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
-import frc.robot.subsystems.RotationSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 // import frc.robot.subsystems.SwerveDriveSubsystem;
 import frc.robot.subsystems.SwerveModule;
@@ -50,8 +46,7 @@ public class RobotContainer {
   private final IntakeSubsystem m_IntakeSubsystem = new IntakeSubsystem();
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   private final ShooterSubsystem m_ShooterSubsystem = new ShooterSubsystem();
-  private final RotationSubsystem m_RotationSubsystem = new RotationSubsystem();
-  private final ConveyorSubsystem m_ConveyorSubsystem = new ConveyorSubsystem();
+  private final StorageSubsystem m_ConveyorSubsystem = new StorageSubsystem();
   //  private final SwerveDriveSubsystem m_SwerveDriveSubsystem = new SwerveDriveSubsystem(    
   //   testTranPos,
   //   testTranVel,
@@ -67,6 +62,9 @@ public class RobotContainer {
       new CommandXboxController(OperatorConstants.kDriverControllerPort);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
+
+
+
   public RobotContainer() {
     configureBindings();
       //  m_SwerveDriveSubsystem.setDefaultCommand(new SwerveControlCommand(
@@ -79,7 +77,12 @@ public class RobotContainer {
 
   
   private void configureBindings() {
-    //Adjusting powers, currently not working for the time being :(
+
+    //////////////////////////////////////////////////////////////////////////////////////////
+    ///                               TEST COMMANDS                                        ///
+    /// //////////////////////////////////////////////////////////////////////////////////////
+
+    //Adjusting powers, currently not working for the time being :( ?
     new JoystickButton(controller0, GamepadConstants.kAButtonPort)
         .onTrue(new ShooterTestSpeedDown(m_ShooterSubsystem, controller0));
     new JoystickButton(controller0, GamepadConstants.kXButtonPort)
@@ -90,43 +93,27 @@ public class RobotContainer {
         .onTrue(new ShooterTestShutdown(m_ShooterSubsystem, controller0));
   
 
-    new JoystickButton(controller0, GamepadConstants.kRightBumperPort)
-            .onTrue(new RotationTestSetSpeed(m_RotationSubsystem, controller0));
-    new JoystickButton(controller0, GamepadConstants.kLeftBumperPort)
-            .onTrue(new RotationTestSetSpeedNeg(m_RotationSubsystem, controller0));     
-            
-    new POVButton(controller0, GamepadConstants.kDpadDown)
-            .onTrue(new RotationTopCommand(m_RotationSubsystem));
-    new POVButton(controller0, GamepadConstants.kDpadUp)
-            .onTrue(new RotationBottomCommand(m_RotationSubsystem));
     
     
-    
+    //////////////////////////////////////////////////////////////////////////////////////////
+    ///                              TELEOP COMMANDS                                       ///
+    /// //////////////////////////////////////////////////////////////////////////////////////
+
+
+    /// Stil needs to be tested, do not rely on this yet
     new POVButton(controller0, GamepadConstants.kDpadLeft)
-            .onTrue(new ConveyorBackwardCommand(m_ConveyorSubsystem, controller0));
+            .onTrue(new StorageBackwardCommand(m_ConveyorSubsystem, controller0));
     new POVButton(controller0, GamepadConstants.kDpadRight)
             .onTrue(new ConveyorForwardCommand(m_ConveyorSubsystem, controller0));
       
 
 
 
-
-
-
-
-
-
-    new Trigger(m_exampleSubsystem::exampleCondition)
-        .onTrue(new ExampleCommand(m_exampleSubsystem));
-
-    // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
-    // cancelling on release.
-    m_driverController.b().whileTrue(m_exampleSubsystem.exampleMethodCommand());
-  }
-
   
+  }  
   public Command getAutonomousCommand() {
-    // An example command will be run in autonomous
     return Autos.exampleAuto(m_exampleSubsystem);
+
+
   }
 }

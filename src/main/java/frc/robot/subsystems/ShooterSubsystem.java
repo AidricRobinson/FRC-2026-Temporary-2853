@@ -15,41 +15,41 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.PortConstants;
 
 public class ShooterSubsystem extends SubsystemBase {
-  private SparkFlex leftFlywheel; 
-  private SparkFlex rightFlywheel;
-  private SparkFlexConfig leftFlywheelConfig;
-  private SparkFlexConfig rightFlywheelConfig;
+  private SparkFlex leftMotor; 
+  private SparkFlex rightMotor;
+  private SparkFlexConfig leftMotorConfig;
+  private SparkFlexConfig rightMotorConfig;
   double testSpeed = 0;
 
   
   public ShooterSubsystem() {
-    leftFlywheel = new SparkFlex(PortConstants.leftFlywheelPort, MotorType.kBrushless);
-    rightFlywheel = new SparkFlex(PortConstants.rightFlywheelPort, MotorType.kBrushless);
+    leftMotor = new SparkFlex(PortConstants.leftMotorPort, MotorType.kBrushless);
+   rightMotor = new SparkFlex(PortConstants.rightMotorPort, MotorType.kBrushless);
 
-    leftFlywheelConfig = new SparkFlexConfig();
-    leftFlywheelConfig
+    leftMotorConfig = new SparkFlexConfig();
+    leftMotorConfig
       .inverted(true)
       .idleMode(IdleMode.kCoast);
 
-    leftFlywheel.configure(leftFlywheelConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+    leftMotor.configure(leftMotorConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
 
-    rightFlywheelConfig = new SparkFlexConfig();
-    rightFlywheelConfig
+   rightMotorConfig = new SparkFlexConfig();
+   rightMotorConfig
       .inverted(false)
       .idleMode(IdleMode.kCoast);
      
-    rightFlywheel.configure(rightFlywheelConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+   rightMotor.configure(rightMotorConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
   }
 
   public void setPower(double power) {
-    leftFlywheel.set(power);
-    rightFlywheel.set(power);
+    leftMotor.set(power);
+   rightMotor.set(power);
   }
   public void setLeftPower(double power){
-    leftFlywheel.set(power);
+    leftMotor.set(power);
   }
   public void setRightPower(double power){
-    leftFlywheel.set(power);
+    leftMotor.set(power);
   }
 
 
@@ -69,8 +69,8 @@ public void setShooterTestPower(){
     setPower(testSpeed);
 }
 public void shutdown(){
-    leftFlywheel.set(0);
-    rightFlywheel.set(0);
+    leftMotor.set(0);
+   rightMotor.set(0);
 }
 
   @Override
