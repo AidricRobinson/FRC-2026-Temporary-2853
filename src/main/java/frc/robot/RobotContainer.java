@@ -9,7 +9,7 @@ import frc.robot.Constants.GamepadConstants;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.AutoCommands.Autos;
 import frc.robot.commands.TeleOpCommands.StorageBackwardCommand;
-import frc.robot.commands.TeleOpCommands.ConveyorForwardCommand;
+import frc.robot.commands.TeleOpCommands.StorageForwardCommand;
 
 // import frc.robot.commands.SwerveControlCommand;
 import frc.robot.commands.TestCommands.ShooterTestCommands.ShooterTestSetSpeed;
@@ -104,7 +104,7 @@ public class RobotContainer {
     new POVButton(controller0, GamepadConstants.kDpadLeft)
             .onTrue(new StorageBackwardCommand(m_ConveyorSubsystem, controller0));
     new POVButton(controller0, GamepadConstants.kDpadRight)
-            .onTrue(new ConveyorForwardCommand(m_ConveyorSubsystem, controller0));
+            .onTrue(new StorageForwardCommand(m_ConveyorSubsystem, controller0));
       
 
 

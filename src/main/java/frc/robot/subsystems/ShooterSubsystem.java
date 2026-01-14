@@ -40,7 +40,6 @@ public class ShooterSubsystem extends SubsystemBase {
      
    rightMotor.configure(rightMotorConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
   }
-
   public void setPower(double power) {
     leftMotor.set(power);
    rightMotor.set(power);
@@ -51,27 +50,25 @@ public class ShooterSubsystem extends SubsystemBase {
   public void setRightPower(double power){
     leftMotor.set(power);
   }
-
-
   public void shooterTestSpeedUp(){
     testSpeed += 0.1;
-}
-public void shooterTestSpeedDown(){
+  }
+  public void shooterTestSpeedDown(){
     testSpeed -= 0.1;
-}
-public void shooterTestSpeedShutdown(){
+  }
+  public void shooterTestSpeedShutdown(){
     testSpeed = 0;
-}
-public double getShooterTestSpeed(){
+  }
+  public double getShooterTestSpeed(){
     return testSpeed;
-}
-public void setShooterTestPower(){
+  }
+  public void setShooterTestPower(){
     setPower(testSpeed);
-}
-public void shutdown(){
+  }
+  public void shutdown(){
     leftMotor.set(0);
    rightMotor.set(0);
-}
+  }
 
   @Override
   public void periodic() {

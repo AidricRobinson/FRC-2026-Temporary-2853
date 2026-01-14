@@ -18,8 +18,6 @@ public class StorageSubsystem extends SubsystemBase {
     public void setPower(double power){
         storageMotor.set(power);
     }
-
-
     public void setMotorTestSpeed() {
         storageMotor.set(testSpeed);
     }
@@ -35,7 +33,6 @@ public class StorageSubsystem extends SubsystemBase {
     public void testSpeedShutdown() {
         testSpeed = 0;
     }
-
     public void shutdown(){
         storageMotor.set(0);
     }
