@@ -39,9 +39,9 @@ public final class Constants {
 
     public static final int rotationMotorPort = 9; 
 
-    public static final int StorageMotorPort = 19023; //placeholder
+    public static final int StorageMotorPort = 12; //placeholder
     
-    public static final int intakeMotorPort = 10241; //placeholder
+    public static final int intakeMotorPort = 13; //placeholder
   }
   public static class RotationConstants {
     public static final double kRotationTolerance = 0.5;

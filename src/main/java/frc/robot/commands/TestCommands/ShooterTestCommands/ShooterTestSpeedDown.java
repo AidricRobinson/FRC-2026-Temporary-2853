@@ -24,7 +24,6 @@ public class ShooterTestSpeedDown extends Command {
     m_ShooterSubsystem.shooterTestSpeedDown();
   }
 
-
   @Override
   public void execute() {
   }
