@@ -21,7 +21,7 @@ public class StorageTestSpeedUp extends Command {
 
   @Override
   public void initialize() {
-    m_StorageSubsystem.setMotorTestSpeed();
+    m_StorageSubsystem.upSpeed();
 }
 
   @Override
@@ -34,6 +34,6 @@ public class StorageTestSpeedUp extends Command {
 
   @Override
   public boolean isFinished() {
-    return !controller.getRawButton(GamepadConstants.kXButtonPort);
+    return (controller.getRawButton(GamepadConstants.kDpadUp));
   }
 }

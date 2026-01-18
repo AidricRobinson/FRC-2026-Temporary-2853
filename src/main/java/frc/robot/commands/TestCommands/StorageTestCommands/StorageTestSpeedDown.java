@@ -21,7 +21,7 @@ public class StorageTestSpeedDown extends Command {
 
   @Override
   public void initialize() {
-    m_StorageSubsystem.testSpeedShutdown();
+    m_StorageSubsystem.downSpeed();
   }
 
 
@@ -35,6 +35,6 @@ public class StorageTestSpeedDown extends Command {
 
   @Override
   public boolean isFinished() {
-    return controller.getRawButton(GamepadConstants.kAButtonPort);
+    return controller.getRawButton(GamepadConstants.kDpadDown);
   }
 }

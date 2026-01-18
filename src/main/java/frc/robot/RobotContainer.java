@@ -100,14 +100,14 @@ public class RobotContainer {
         .onTrue(new ShooterTestShutdown(m_ShooterSubsystem, controller0));
 
     //STORAGE
-    new POVButton(controller0, GamepadConstants.kDpadRight)
-       .onTrue(new StorageTestShutdown(m_ConveyorSubsystem, controller0));
-    new POVButton(controller0, GamepadConstants.kDpadLeft)
-       .onTrue(new StorageTestSetSpeed(m_ConveyorSubsystem, controller0));
-    new POVButton(controller0, GamepadConstants.kDpadUp)
-       .onTrue(new StorageTestSpeedUp(m_ConveyorSubsystem, controller0));
-    new POVButton(controller0, GamepadConstants.kDpadDown)
-       .onTrue(new StorageTestSpeedDown(m_ConveyorSubsystem, controller0));
+    // new POVButton(controller0, GamepadConstants.kDpadRight)
+    //    .onTrue(new StorageTestShutdown(m_ConveyorSubsystem, controller0));
+    // new POVButton(controller0, GamepadConstants.kDpadLeft)
+    //    .onTrue(new StorageTestSetSpeed(m_ConveyorSubsystem, controller0));
+    // new POVButton(controller0, GamepadConstants.kDpadUp)
+    //    .onTrue(new StorageTestSpeedUp(m_ConveyorSubsystem, controller0));
+    // new POVButton(controller0, GamepadConstants.kDpadDown)
+    //    .onTrue(new StorageTestSpeedDown(m_ConveyorSubsystem, controller0));
   
     //////////////////////////////////////////////////////////////////////////////////////////
     ///                              TELEOP COMMANDS                                       ///
@@ -116,13 +116,12 @@ public class RobotContainer {
 
     /// Stil needs to be tested, do not rely on this yet
     /// STORAGE
-    new POVButton(controller0, GamepadConstants.kDpadLeft)
+    new JoystickButton(controller0, GamepadConstants.kLeftBumperPort)
             .onTrue(new StorageBackwardCommand(m_ConveyorSubsystem, controller1));
-    new POVButton(controller0, GamepadConstants.kDpadRight)
-            .onTrue(new StorageForwardCommand(m_ConveyorSubsystem, controller1));
-    //SHOOTER
     new JoystickButton(controller0, GamepadConstants.kRightBumperPort)
-            .onTrue(new ShooterCommand(m_ShooterSubsystem, controller1));
+            .onTrue(new StorageForwardCommand(m_ConveyorSubsystem, controller1));
+    // new JoystickButton(controller1, GamepadConstants.kRightBumperPort)
+    //         .onTrue(new ShooterCommand(m_ShooterSubsystem, controller1));
       
   }  
   public Command getAutonomousCommand() {

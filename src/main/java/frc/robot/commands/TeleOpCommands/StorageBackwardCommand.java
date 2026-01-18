@@ -16,12 +16,12 @@ public class StorageBackwardCommand extends Command{
 
     }
     public void execute(){
-        m_conveyorSubsystem.setPower(-0.4);
+        m_conveyorSubsystem.setPower(-0.25);
     }
     public void end(boolean interupted){
         m_conveyorSubsystem.shutdown();
     }
     public boolean isFinished(){
-        return controller.getRawButton(GamepadConstants.kDpadLeft);//pls change
+        return !controller.getRawButton(GamepadConstants.kLeftBumperPort);//pls change
     }
 }

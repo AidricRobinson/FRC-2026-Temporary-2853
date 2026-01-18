@@ -16,7 +16,7 @@ public class ShooterCommand extends Command{
 
     }
     public void execute(){
-        shooterSubsystem.setPower(0.75);
+        shooterSubsystem.setPower(0.35);
     }
     public void end(boolean interupted){
         shooterSubsystem.shutdown();
